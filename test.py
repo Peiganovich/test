@@ -1,28 +1,28 @@
-"classmethod_and_staticmethod"
+"Encapsulation"
 
-class Vector:
-    "Coords"
-    MAX_COORDS = 100
-    MIN_COORDS = 0
+class Point:
+    "Point"
 
-    def __init__(self, x, y):
-        self.x = self.y = 0
-        if self.validate(x) and self.validate(y):
-            self.x = x
-            self.y = y
+    def __init__(self, x, y, z):
+        self.__x = x
+        self.__y = y
+        self._z = z
 
-    @classmethod
-    def validate(cls, arg):
-        "Validate"
-        return cls.MIN_COORDS <= arg <= cls.MAX_COORDS
+    def set_coord(self, x, y, z):
+        "set_coord"
+        self.__x = x
+        self.__y = y
+        self._z = z
 
-    @staticmethod
-    def norm2(x, y):
-        "Norm2"
-        return x*x + y*y
+    def get_coord(self):
+        "get_coord"
+        return self.__x, self.__y, self._z
 
 
+pt = Point(1,2,3)
+print(pt.get_coord())
+pt.set_coord(10,20,30)
+print(pt.get_coord())
+print(pt._z) #Можно вывести но не стоит, так как protected атрибуты служат для взаимодействия внутри дочерних и прородителя классов
 
-vector = Vector(1,2)
-print(Vector.norm2(5,6))
-print(Vector.validate(vector.x))
+#print(pt.__x, pt.__y) - нельзя вывести ошибка->(AttributeError: 'Point' object has no attribute '__x')
