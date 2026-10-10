@@ -1,6 +1,3 @@
-
-
-
 class DataBase:
     
     __instance = None
@@ -32,8 +29,9 @@ class DataBase:
     
     def write(self, data):
         print(f"Запись в образ БД: {data}")
-        
-        
+
+print("Изменения для гита")
+
 database1 = DataBase('Files', 12345, 5432)
 print(database1.__dict__)
 database2 = DataBase('Docx', 54321, 3306)
